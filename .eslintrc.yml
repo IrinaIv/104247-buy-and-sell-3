@@ -8,4 +8,3 @@ env:
 extends: 'htmlacademy/node'
 rules:
   indent: [error, tab]
-  quotes: [error, single, { allowTemplateLiterals: true }]

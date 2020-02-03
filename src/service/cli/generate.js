@@ -1,11 +1,11 @@
 'use strict';
 
-const chalk = require('chalk');
-const fs = require('fs');
+const chalk = require(`chalk`);
+const fs = require(`fs`);
 const {
 	getRandomInt,
 	shuffle,
-} = require('../../utils');
+} = require(`../../utils`);
 
 const DEFAULT_COUNT = 1;
 const FILE_NAME = `mocks.json`;
