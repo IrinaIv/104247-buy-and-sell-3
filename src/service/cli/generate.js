@@ -55,24 +55,24 @@ const generateOffers = (count) => (
 	Array(count)
 		.fill({})
 		.map(() => ({
-		category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]],
-		description: shuffle(SENTENCES).slice(1, 5).join(` `),
-		picture: getPictureFileName(getRandomInt(PictureRestrict.min, PictureRestrict.max)),
-		title: TITLES[getRandomInt(0, TITLES.length - 1)],
-		type: Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)],
-		sum: getRandomInt(SumRestrict.min, SumRestrict.max),
-	}))
+			category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]],
+			description: shuffle(SENTENCES).slice(1, 5).join(` `),
+			picture: getPictureFileName(getRandomInt(PictureRestrict.min, PictureRestrict.max)),
+			title: TITLES[getRandomInt(0, TITLES.length - 1)],
+			type: Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)],
+			sum: getRandomInt(SumRestrict.min, SumRestrict.max),
+		}))
 );
 
 module.exports = {
 	name: `--generate`,
 	run(args) {
-		const [ count ] = args;
+		const [count] = args;
 		const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
 		const content = JSON.stringify(generateOffers(countOffer));
 
 		fs.writeFile(FILE_NAME, content, (err) => {
-			return !!err
+			return err
 				? console.error(chalk.red(`Can't write data to file...`))
 				: console.info(chalk.green(`Operation success. File created.`));
 		});
