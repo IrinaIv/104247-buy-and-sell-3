@@ -8,7 +8,9 @@ const {
 } = require(`../../utils`);
 
 const DEFAULT_COUNT = 1;
-const FILE_NAME = `mocks.json`;
+const MAX_COUNT = 1000;
+const FILE_NAME = `mock.json`;
+
 const TITLES = [
 	`Продам книги Стивена Кинга`,
 	`Продам новую приставку Sony Playstation 5`,
@@ -68,6 +70,11 @@ module.exports = {
 	name: `--generate`,
 	run(args) {
 		const [count] = args;
+
+		if (count > MAX_COUNT) {
+			return console.error(chalk.red(`Не больше 1000 объявлений`));
+		}
+
 		const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
 		const content = JSON.stringify(generateOffers(countOffer));
 
