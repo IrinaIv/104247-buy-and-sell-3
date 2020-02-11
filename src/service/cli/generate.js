@@ -60,7 +60,7 @@ const generateOffers = (count) => (
 			description: shuffle(SENTENCES).slice(1, 5).join(` `),
 			picture: getPictureFileName(getRandomInt(PICTURE_RESTRICT.MIN, PICTURE_RESTRICT.MAX)),
 			title: TITLES[getRandomInt(0, TITLES.length - 1)],
-			type: Object.keys(OFFER_TYPE)[Math.floor(Math.random() * Object.keys(OFFER_TYPE).length)],
+			type: OFFER_TYPE[Object.keys(OFFER_TYPE)[Math.floor(Math.random() * Object.keys(OFFER_TYPE).length)]],
 			sum: getRandomInt(SUM_RESTRICT.MIN, SUM_RESTRICT.MAX),
 		}))
 );
