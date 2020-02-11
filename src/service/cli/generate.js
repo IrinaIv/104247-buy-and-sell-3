@@ -37,17 +37,17 @@ const CATEGORIES = [
 	`Животные`,
 	`Журналы`,
 ];
-const OfferType = {
-	offer: `offer`,
-	sale: `sale`,
+const OFFER_TYPE = {
+	OFFER: `offer`,
+	SALE: `sale`,
 };
-const SumRestrict = {
-	min: 1000,
-	max: 100000,
+const SUM_RESTRICT = {
+	MIN: 1000,
+	MAX: 100000,
 };
-const PictureRestrict = {
-	min: 1,
-	max: 16,
+const PICTURE_RESTRICT = {
+	MIN: 1,
+	MAX: 16,
 };
 
 const getPictureFileName = (number) => number > 10 ? `item${number}.jpg` : `item0${number}.jpg`;
@@ -58,10 +58,10 @@ const generateOffers = (count) => (
 		.map(() => ({
 			category: [CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]],
 			description: shuffle(SENTENCES).slice(1, 5).join(` `),
-			picture: getPictureFileName(getRandomInt(PictureRestrict.min, PictureRestrict.max)),
+			picture: getPictureFileName(getRandomInt(PICTURE_RESTRICT.MIN, PICTURE_RESTRICT.MAX)),
 			title: TITLES[getRandomInt(0, TITLES.length - 1)],
-			type: Object.keys(OfferType)[Math.floor(Math.random() * Object.keys(OfferType).length)],
-			sum: getRandomInt(SumRestrict.min, SumRestrict.max),
+			type: Object.keys(OFFER_TYPE)[Math.floor(Math.random() * Object.keys(OFFER_TYPE).length)],
+			sum: getRandomInt(SUM_RESTRICT.MIN, SUM_RESTRICT.MAX),
 		}))
 );
 
