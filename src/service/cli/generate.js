@@ -78,9 +78,11 @@ module.exports = {
 		const content = JSON.stringify(generateOffers(countOffer));
 
 		fs.writeFile(FILE_NAME, content, (err) => {
-			return err
-				? console.error(`Can't write data to file...`)
-				: console.info(`Operation success. File created.`);
+			if (err) {
+				return console.error(`Can't write data to file...`);
+			}
+
+			return console.info(`Operation success. File created.`);
 		});
 	}
 };
