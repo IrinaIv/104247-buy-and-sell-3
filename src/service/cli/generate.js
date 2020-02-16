@@ -80,9 +80,9 @@ module.exports = {
 		fs.writeFile(FILE_NAME, content, (err) => {
 			if (err) {
 				console.error(`Can't write data to file...`);
+			} else {
+				console.info(`Operation success. File created.`);
 			}
-
-			console.info(`Operation success. File created.`);
 		});
 	}
 };
