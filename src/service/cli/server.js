@@ -9,7 +9,12 @@ const DEFAULT_PORT = 3000;
 const FILENAME = `mock.json`;
 
 const sendResponse = (res, statusCode, message) => {
-	const template = `
+	res.statusCode = statusCode;
+	res.writeHead(statusCode, {
+		'Content-Type': `text/html; charset=UTF-8`,
+	});
+
+	const html = `
     <!Doctype html>
       <html lang="ru">
       <head>
@@ -18,12 +23,7 @@ const sendResponse = (res, statusCode, message) => {
       <body>${message}</body>
     </html>`.trim();
 
-	res.statusCode = statusCode;
-	res.writeHead(statusCode, {
-		'Content-Type': `text/html; charset=UTF-8`,
-	});
-
-	res.end(template);
+	res.end(html);
 };
 
 const onClientConnect = async (req, res) => {
